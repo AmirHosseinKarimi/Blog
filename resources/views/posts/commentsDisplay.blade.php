@@ -8,7 +8,7 @@
         <p class="mt-2">
             {{ $comment->content }}
             <br>
-            <a href="#comment_{{ $comment->id }}">Reply</a>
+            <a href="#comment_{{ $comment->id }}">{{ _p('post.commend_reply', 'Reply') }}</a>
         </p>
 
         @include('posts.commentsDisplay', ['comments' => $comment->replies])

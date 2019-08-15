@@ -26,17 +26,19 @@
                         <div class="card-footer d-flex justify-content-between">
                             <div class="d-flex align-items-center">
                                 <div class="mr-3">
-                                    Date : <strong>{{ $post->created_at->format('M d, Y') }}</strong>
+                                    {{ _p('main.date', 'Date') }} : <strong>{{ $post->created_at->format('M d, Y') }}</strong>
                                 </div>
                                 <div class="mr-3">
-                                    Author : <strong>{{$post->author->name}}</strong>
+                                    {{ _p('main.author', 'Author') }} : <strong>{{$post->author->name}}</strong>
                                 </div>
+                              @if ($post->comment_status==='open')
                                 <div class="mr-3">
-                                    Comments : <strong>{{$post->comment_count}}</strong>
+                                    {{ _p('main.comments', 'Comments') }} : <strong>{{$post->comment_count}}</strong>
                                 </div>
+                              @endif
                             </div>
                             <div>
-                                <a href="{{ route('posts.post_link', $post->slug) }}" class="btn btn-sm btn-primary">Read More</a>
+                                <a href="{{ route('posts.post_link', $post->slug) }}" class="btn btn-sm btn-primary">{{ _p('main.read_more', 'Read More') }}</a>
                             </div>
                         </div>
                     </div>

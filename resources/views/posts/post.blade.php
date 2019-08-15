@@ -21,11 +21,11 @@
                     <div class="card-footer d-flex justify-content-between">
                         <div class="d-flex align-items-center">
                             <div class="mr-3">
-                                Date : <strong>{{ $post->created_at->format('M d, Y') }}</strong>
+                                {{ _p('main.Date', 'Date') }} : <strong>{{ $post->created_at->format('M d, Y') }}</strong>
                             </div>
                         </div>
                         <div>
-                            <a href="{{ route('posts.post_short_link', $post->id) }}">Short Link</a>
+                            <a href="{{ route('posts.post_short_link', $post->id) }}">{{ _p('post.short_link', 'Short Link') }}</a>
                         </div>
                     </div>
                 </div>
@@ -41,7 +41,7 @@
                 @if( $post->comments )
                     <div class="card my-4">
                         <div class="card-header">
-                            Comments ({{ $post->comment_count }})
+                            {{ _p('post.comments_list_title', 'Comments') }} ({{ $post->comment_count }})
                         </div>
                         <div class="card-body pb-0">
                             @include('posts.commentsDisplay', ['comments' => $post->comments])
