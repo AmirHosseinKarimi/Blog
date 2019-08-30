@@ -26,3 +26,7 @@ Route::get('/p/{id}', 'PostController@show')
 Route::post('/comments/store', 'CommentController@store')->name('comments.store');
 
 //Route::get('/home', 'HomeController@index')->name('home2');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

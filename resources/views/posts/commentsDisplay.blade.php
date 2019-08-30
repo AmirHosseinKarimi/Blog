@@ -13,7 +13,7 @@
         </div>
         <div class="mt-2">
             <div class="d-block">{{ $comment->content }}</div>
-            <a href="#comment_{{ $comment->id }}" class="d-inline-block mt-2">{{ _p('comment.reply', 'Reply') }}</a>
+            <a href="#comment_{{ $comment->id }}" class="d-inline-block mt-2" onclick="comment_reply(event, {{ $comment->id }}, '{{ htmlspecialchars($comment->author_name, ENT_QUOTES) }}')">{{ _p('comment.reply', 'Reply') }}</a>
         </div>
 
         @include('posts.commentsDisplay', ['comments' => $comment->replies])

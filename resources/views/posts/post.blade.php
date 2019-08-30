@@ -44,10 +44,14 @@
             <div class="card my-4">
                 <div class="card-header">{{ _p('post.leave_comment', 'Leave a comment') }}</div>
                 <div class="card-body">
-                    <form method="POST" action="{{ route('comments.store') }}">
+                    <form id="post_comment" method="POST" action="{{ route('comments.store') }}">
                         @csrf
                         <input type="hidden" name="post_id" value="{{ $post->id }}">
                         <input type="hidden" name="parent_id" value="">
+                        <div class="post-comment-reply mb-3 p-3 d-none" style="background-color:#f2f2f2;">
+                            Reply to <strong id="reply_to_name">Amir</strong>
+                            (<a href="#" onclick="return comment_reply_cancel(event);">Cancel</a>)
+                        </div>
                         @guest
                         <div class="row">
                             <div class="col-md-6">
