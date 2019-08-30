@@ -15,6 +15,9 @@
                     </div>
                 @endif
 
+                <hello class="sam"></hello>
+                <hello class="salam"></hello>
+
                 @foreach($posts as $post)
                     <div class="card mt-4">
                         <div class="card-header">
@@ -26,19 +29,19 @@
                         <div class="card-footer d-flex justify-content-between">
                             <div class="d-flex align-items-center">
                                 <div class="mr-3">
-                                    {{ _p('main.date', 'Date') }} : <strong>{{ $post->created_at->format('M d, Y') }}</strong>
+                                    {{ _p('post.date', 'Date') }} : <strong>{{ $post->created_at->format('M d, Y') }}</strong>
                                 </div>
                                 <div class="mr-3">
-                                    {{ _p('main.author', 'Author') }} : <strong>{{$post->author->name}}</strong>
+                                    {{ _p('post.author', 'Author') }} : <strong>{{$post->author->name}}</strong>
                                 </div>
                               @if ($post->comment_status==='open')
                                 <div class="mr-3">
-                                    {{ _p('main.comments', 'Comments') }} : <strong>{{$post->comment_count}}</strong>
+                                    {{ _p('post.comments', 'Comments') }} : <strong>{{$post->comment_count}}</strong>
                                 </div>
                               @endif
                             </div>
                             <div>
-                                <a href="{{ route('posts.post_link', $post->slug) }}" class="btn btn-sm btn-primary">{{ _p('main.read_more', 'Read More') }}</a>
+                                <a href="{{ route('posts.post_link', $post->slug) }}" class="btn btn-sm btn-primary">{{ _p('post.read_more', 'Read More') }}</a>
                             </div>
                         </div>
                     </div>

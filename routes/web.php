@@ -23,5 +23,6 @@ Route::get('/p/{id}', 'PostController@show')
     ->where('id', '[0-9]+')
     ->name('posts.post_short_link');
 
+Route::post('/comments/store', 'CommentController@store')->name('comments.store');
 
 //Route::get('/home', 'HomeController@index')->name('home2');

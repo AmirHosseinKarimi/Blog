@@ -13,6 +13,8 @@
                 </ol>
             </nav>
 
+            @include('flash-messages')
+
             <div class="card my-4">
                 <div class="card-header">
                     <strong>{{ $post->title }}</strong>
@@ -21,7 +23,7 @@
                 <div class="card-footer d-flex justify-content-between">
                     <div class="d-flex align-items-center">
                         <div class="mr-3">
-                            {{ _p('main.Date', 'Date') }} : <strong>{{ $post->created_at->format('M d, Y') }}</strong>
+                            {{ _p('post.Date', 'Date') }} : <strong>{{ $post->created_at->format('M d, Y') }}</strong>
                         </div>
                     </div>
                     <div>
@@ -39,15 +41,86 @@
             </div>
 
             @if ($post->comment_status==='open')
+            <div class="card my-4">
+                <div class="card-header">{{ _p('post.leave_comment', 'Leave a comment') }}</div>
+                <div class="card-body">
+                    <form method="POST" action="{{ route('comments.store') }}">
+                        @csrf
+                        <input type="hidden" name="post_id" value="{{ $post->id }}">
+                        <input type="hidden" name="parent_id" value="">
+                        @guest
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="name">{{ _p('comment.fileds.name.label', 'Name')}}</label>
+                                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" placeholder="{{ _p('comment.fileds.name.placeholder', 'John')}}" autocomplete="name" autofocus>
 
+                                    @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="email">{{ _p('comment.fileds.email.label', 'E-mail')}}</label>
+                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="{{ _p('comment.fileds.email.placeholder', 'john@gmail.com')}}" autocomplete="email">
+
+                                    @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="website">{{ _p('comment.fileds.website.label', 'Website')}}</label>
+                                    <input id="website" type="text" class="form-control @error('website') is-invalid @enderror" name="website" value="{{ old('website') }}" placeholder="{{ _p('comment.fileds.website.placeholder', 'https://example.com')}}">
+
+                                    @error('website')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="content">{{ _p('comment.fileds.content.label', 'Comment')}}</label>
+                                    <textarea id="content" type="text" class="form-control @error('content') is-invalid @enderror" name="content" value="{{ old('content') }}"  placeholder="{{ _p('comment.fileds.content.placeholder', 'Leave you comment')}}" rows="8" maxlength="3000"></textarea>
+
+                                    @error('content')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+                        @else
+                            <div class="form-group">
+                                <label for="content">{{ _p('comment.fileds.content.label', 'Comment')}}</label>
+                                <textarea id="content" type="text" class="form-control @error('content') is-invalid @enderror" name="content" value="{{ old('content') }}"  placeholder="{{ _p('comment.fileds.content.placeholder', 'Leave you comment')}}" rows="8" maxlength="3000"></textarea>
+
+                                @error('content')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                        @endguest
+                        <button type="submit" class="btn btn-block btn-primary">{{ _p('comment.fileds.submit.text', 'Post comment')}}</button>
+                    </form>
+                </div>
+            </div>
             @endif
 
             @if( count($post->comments) )
             <div class="card my-4">
                 <div class="card-header">
-                    {{ _p('post.comments_list_title', 'Comments') }} ({{ $post->comment_count }})
+                    {{ _p('comment.list_title', 'Comments') }} ({{ $post->comment_count }})
                 </div>
-                <div class="card-body pb-0">
+                <div class="card-body post-comments p-0">
                     @include('posts.commentsDisplay', ['comments' => $post->comments])
                 </div>
             </div>

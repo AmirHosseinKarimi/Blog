@@ -21,7 +21,7 @@ class CreateCommentsTable extends Migration
             $table->string('author_website')->nullable();
             $table->string('author_ip')->nullable();
             $table->string('author_agent')->nullable();
-            $table->string('content')->nullable();
+            $table->text('content');
             $table->string('status')->default('waiting');
             $table->unsignedBigInteger('user_id')->nullable();
             $table->unsignedBigInteger('parent_id')->nullable();
