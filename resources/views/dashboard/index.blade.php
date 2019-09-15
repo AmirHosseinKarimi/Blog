@@ -13,8 +13,8 @@
             <span class="info-box-icon bg-aqua"><i class="fas fa-file"></i></span>
             <div class="info-box-content">
               <span class="info-box-text">Posts</span>
-              <span class="info-box-number">{{ $cards->publishedPostsCount }} <small>Published</small></span>
-              <span class="text-danger">{{ $cards->waitingPostsCount }} need approve</span>
+              <span class="info-box-number">{{ $cards->posts->published }} <small>Published</small></span>
+              <span class="text-danger">{{ $cards->posts->waiting }} need approve</span>
             </div>
           </div>
         </div>
@@ -23,8 +23,8 @@
             <span class="info-box-icon bg-red"><i class="fa fa-comments"></i></span>
             <div class="info-box-content">
               <span class="info-box-text">Comments</span>
-              <span class="info-box-number">41,410</span>
-              <span class="text-danger">5 need approve</span>
+              <span class="info-box-number">{{ $cards->comments->approved }} <small>Approved</small></span>
+              <span class="text-danger">{{ $cards->comments->waiting }} need approve</span>
             </div>
           </div>
         </div>

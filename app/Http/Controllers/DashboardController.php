@@ -14,8 +14,14 @@ class DashboardController extends Controller
     public function index()
     {
         $cards = (object) [
-            'publishedPostsCount' => PostController::getPublishedPostsCount(),
-            'waitingPostsCount' => PostController::getWaitingPostsCount()
+            'posts' => (object)[
+                'published' => PostController::getPublishedPostsCount(),
+                'waiting' => PostController::getWaitingPostsCount()
+            ],
+            'comments' => (object)[
+                'approved' => CommentController::getApprovedCount(),
+                'waiting' => CommentController::getWaitingCount()
+            ]
         ];
 
         return view('dashboard.index', compact('cards'));
