@@ -13,7 +13,7 @@ I welcome anyone to fork and develop this project.
 ### Features
 - [x] Posts
 - [x] Comments
-- [ ] Add comment
+- [x] Add comment
 - [ ] Post categories
 - [ ] Post tags
 - [ ] Search post
