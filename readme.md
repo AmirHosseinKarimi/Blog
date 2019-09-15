@@ -20,7 +20,7 @@ I welcome anyone to fork and develop this project.
 - [ ] Posts by category
 - [ ] Posts by tag
 - [ ] Posts by author
-- [ ] Admin Panel
+- [x] Admin Panel
 - [ ] Add/Modify posts
 - [ ] Add/Modify categories
 - [ ] Add/Modify tags
