@@ -41,4 +41,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Post::class, 'author_id');
     }
+
+    public function canUseDashboard()
+    {
+        return in_array($this->role, ['admin','editor','author']);
+    }
 }

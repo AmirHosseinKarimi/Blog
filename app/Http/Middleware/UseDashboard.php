@@ -16,10 +16,10 @@ class UseDashboard
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::user() && in_array(Auth::user()->role, ['admin','editor','author'])) {
+        if (Auth::user() && Auth::user()->canUseDashboard()) {
             return $next($request);
         }
 
-        return redirect('/');
+        return redirect()->route('login');
     }
 }
