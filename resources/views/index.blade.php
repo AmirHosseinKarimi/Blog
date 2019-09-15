@@ -15,9 +15,6 @@
                     </div>
                 @endif
 
-                <hello class="sam"></hello>
-                <hello class="salam"></hello>
-
                 @foreach($posts as $post)
                     <div class="card mt-4">
                         <div class="card-header">
