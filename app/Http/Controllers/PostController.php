@@ -8,27 +8,46 @@ use Illuminate\Http\Request;
 class PostController extends Controller
 {
     /**
-     * Get posts list
+     * Get published posts list.
      *
-     * @return mixed
+     * @return Illuminate\Database\Eloquent\Model
      */
     public static function getPublishedPosts(int $itemsPerPage = 10)
     {
-        return Post::where('status', 'publish')->paginate($itemsPerPage);
-    }
-
-    public static function getPublishedPostBySlug($slug)
-    {
-        return Post::where('slug', $slug)->first();
-    }
-
-    public static function getPublishedPostById($id)
-    {
-        return Post::find($id);
+        return Post::where('status', 'publish')
+                   ->whereDate('published_at', '<=', now())
+                   ->orderBy('published_at', 'desc')
+                   ->paginate($itemsPerPage);
     }
 
     /**
-     * Get published posts count
+     * Get published post by slug.
+     *
+     * @param string $slug
+     * @return Illuminate\Database\Eloquent\Model
+     */
+    public static function getPublishedPostBySlug(string $slug)
+    {
+        return Post::where('slug', $slug)
+                   ->whereDate('published_at', '<=', now())
+                   ->first();
+    }
+
+    /**
+     * Get published post by id.
+     *
+     * @param int $id
+     * @return Illuminate\Database\Eloquent\Model
+     */
+    public static function getPublishedPostById(int $id)
+    {
+        return Post::where('id', $id)
+                   ->whereDate('published_at', '<=', now())
+                   ->first();
+    }
+
+    /**
+     * Get published posts count.
      *
      * @return int
      */
@@ -40,7 +59,7 @@ class PostController extends Controller
     }
 
     /**
-     * Get waiting posts count
+     * Get waiting posts count.
      *
      * @return int
      */
@@ -50,15 +69,13 @@ class PostController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
+     * Display a listing of posts.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $posts = Post::where('status', 'publish')
-            ->orderBy('published_at', 'desc')
-            ->paginate(10);
+        $posts = $this->getPublishedPosts();
         return view('index', compact('posts'));
     }
 
@@ -85,16 +102,15 @@ class PostController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display the post by id.
      *
      * @param  int  $id
      *
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(int $id)
     {
-        $post = Post::find($id);
-
+        $post = $this->getPublishedPostById($id);
         if ($post === null) {
             // 404
         }
@@ -102,9 +118,16 @@ class PostController extends Controller
         return view('posts.post', compact('post'));
     }
 
-    public function showBySlug($slug)
+    /**
+     * Display the post by slug.
+     *
+     * @param  string  $slug
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showBySlug(string $slug)
     {
-        $post = Post::where('slug', $slug)->first();
+        $post = $this->getPublishedPostBySlug($slug);
 
         if ($post === null) {
             // 404

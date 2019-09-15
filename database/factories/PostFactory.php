@@ -6,7 +6,7 @@ use App\Post;
 use Faker\Generator as Faker;
 
 $factory->define(Post::class, function (Faker $faker) {
-    $status = $faker->randomElement(['publish', 'publish', 'publish', 'draft']);
+    $status = $faker->randomElement(['publish', 'publish', 'waiting', 'draft']);
     return [
         'title' => $faker->sentence(),
         'excerpt' => $faker->realText(),
