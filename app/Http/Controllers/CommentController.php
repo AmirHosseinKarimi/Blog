@@ -18,13 +18,13 @@ class CommentController extends Controller
         return Comment::where('status', 'approved')->count();
     }
     /**
-     * Get waiting comments count
+     * Get pending comments count
      *
      * @return int
      */
-    public static function getWaitingCount()
+    public static function getPendingCount()
     {
-        return Comment::where('status', 'waiting')->count();
+        return Comment::where('status', 'pending')->count();
     }
 
     /**

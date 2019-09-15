@@ -59,13 +59,13 @@ class PostController extends Controller
     }
 
     /**
-     * Get waiting posts count.
+     * Get pending posts count.
      *
      * @return int
      */
-    public static function getWaitingPostsCount()
+    public static function getPendingPostsCount()
     {
-        return Post::where('status', 'waiting')->count();
+        return Post::where('status', 'pending')->count();
     }
 
     /**

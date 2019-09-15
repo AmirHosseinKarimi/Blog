@@ -13,6 +13,6 @@ $factory->define(Comment::class, function (Faker $faker) {
         'author_ip' => $faker->ipv4,
         'author_agent' => $faker->userAgent,
         'content' => $faker->realText(),
-        'status' => $faker->randomElement(['waiting', 'approved', 'rejected']),
+        'status' => $faker->randomElement(['pending', 'approved', 'rejected']),
     ];
 });

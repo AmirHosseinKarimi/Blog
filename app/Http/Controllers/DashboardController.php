@@ -16,11 +16,11 @@ class DashboardController extends Controller
         $cards = (object) [
             'posts' => (object)[
                 'published' => PostController::getPublishedPostsCount(),
-                'waiting' => PostController::getWaitingPostsCount()
+                'pending' => PostController::getPendingPostsCount()
             ],
             'comments' => (object)[
                 'approved' => CommentController::getApprovedCount(),
-                'waiting' => CommentController::getWaitingCount()
+                'pending' => CommentController::getPendingCount()
             ]
         ];
 

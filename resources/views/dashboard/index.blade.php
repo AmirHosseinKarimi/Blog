@@ -14,7 +14,7 @@
             <div class="info-box-content">
               <span class="info-box-text">Posts</span>
               <span class="info-box-number">{{ $cards->posts->published }} <small>Published</small></span>
-              <span class="text-danger">{{ $cards->posts->waiting }} need approve</span>
+              <span class="text-danger">{{ $cards->posts->pending }} pending approval</span>
             </div>
           </div>
         </div>
@@ -24,7 +24,7 @@
             <div class="info-box-content">
               <span class="info-box-text">Comments</span>
               <span class="info-box-number">{{ $cards->comments->approved }} <small>Approved</small></span>
-              <span class="text-danger">{{ $cards->comments->waiting }} need approve</span>
+              <span class="text-danger">{{ $cards->comments->pending }} pending approval</span>
             </div>
           </div>
         </div>
