@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-10">
+        <div class="col-lg-10">
 
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
@@ -23,7 +23,7 @@
                 <div class="card-footer d-flex justify-content-between">
                     <div class="d-flex align-items-center">
                         <div class="mr-3">
-                            {{ _p('post.Date', 'Date') }} : <strong>{{ $post->created_at->format('M d, Y') }}</strong>
+                            {{ _p('post.Date', 'Date') }} : <span>{{ $post->created_at->format('M d, Y') }}</span>
                         </div>
                     </div>
                     <div>

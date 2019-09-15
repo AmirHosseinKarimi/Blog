@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-10">
+            <div class="col-lg-10">
                 @if (session('status'))
                     <div class="card">
                         <div class="card-header">Dashboard</div>
@@ -26,14 +26,14 @@
                         <div class="card-footer d-flex justify-content-between">
                             <div class="d-flex align-items-center">
                                 <div class="mr-3">
-                                    {{ _p('post.date', 'Date') }} : <strong>{{ $post->created_at->format('M d, Y') }}</strong>
+                                    {{ _p('post.date', 'Date') }} : <span>{{ $post->created_at->format('M d, Y') }}</span>
                                 </div>
                                 <div class="mr-3">
-                                    {{ _p('post.author', 'Author') }} : <strong>{{$post->author->name}}</strong>
+                                    {{ _p('post.author', 'Author') }} : <span>{{$post->author->name}}</span>
                                 </div>
                               @if ($post->comment_status==='open')
                                 <div class="mr-3">
-                                    {{ _p('post.comments', 'Comments') }} : <strong>{{$post->comment_count}}</strong>
+                                    {{ _p('post.comments', 'Comments') }} : <span>{{$post->comment_count}}</span>
                                 </div>
                               @endif
                             </div>
@@ -44,6 +44,11 @@
                     </div>
                 @endforeach
 
+                <div class="text-center mt-4">
+                    <div class="d-inline-block">
+                        {{ $posts->links() }}
+                    </div>
+                </div>
             </div>
         </div>
     </div>
