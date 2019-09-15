@@ -13,8 +13,8 @@
             <span class="info-box-icon bg-aqua"><i class="fas fa-file"></i></span>
             <div class="info-box-content">
               <span class="info-box-text">Posts</span>
-              <span class="info-box-number">90</span>
-              <span class="text-danger">5 need approve</span>
+              <span class="info-box-number">{{ $cards->publishedPostsCount }} <small>Published</small></span>
+              <span class="text-danger">{{ $cards->waitingPostsCount }} need approve</span>
             </div>
           </div>
         </div>
