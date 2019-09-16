@@ -9,25 +9,6 @@ use Illuminate\Support\Facades\Auth;
 class CommentController extends Controller
 {
     /**
-     * Get approved comments count
-     *
-     * @return int
-     */
-    public static function getApprovedCount()
-    {
-        return Comment::where('status', 'approved')->count();
-    }
-    /**
-     * Get pending comments count
-     *
-     * @return int
-     */
-    public static function getPendingCount()
-    {
-        return Comment::where('status', 'pending')->count();
-    }
-
-    /**
      * Stroe a new comment.
      *
      * @param  \Illuminate\Http\Request  $request

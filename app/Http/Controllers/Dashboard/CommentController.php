@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Dashboard;
 
-use App\Post;
+use App\Comment;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class PostController extends Controller
+class CommentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -85,24 +85,21 @@ class PostController extends Controller
     }
 
     /**
-     * Get published posts count.
+     * Get approved comments count
      *
      * @return int
      */
-    public static function getPublishedPostsCount()
+    public static function getApprovedCount()
     {
-        return Post::where('status', 'publish')
-                   ->whereDate('published_at', '<=', now())
-                   ->count();
+        return Comment::where('status', 'approved')->count();
     }
-
     /**
-     * Get pending posts count.
+     * Get pending comments count
      *
      * @return int
      */
-    public static function getPendingPostsCount()
+    public static function getPendingCount()
     {
-        return Post::where('status', 'pending')->count();
+        return Comment::where('status', 'pending')->count();
     }
 }

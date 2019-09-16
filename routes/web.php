@@ -30,7 +30,7 @@ Route::group([
     'middleware' => 'dashboard',
     'prefix' => 'dashboard',
     ], function () {
-        Route::get('/', 'DashboardController@index')->name('dashboard');
+        Route::get('/', 'Dashboard\DashboardController@index')->name('dashboard');
         
         Route::get('posts', 'Dashboard\PostController@index')->name('dashboard.posts');
     });

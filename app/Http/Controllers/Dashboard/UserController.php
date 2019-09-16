@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Dashboard;
 
-use App\Post;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class PostController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -82,27 +82,5 @@ class PostController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    /**
-     * Get published posts count.
-     *
-     * @return int
-     */
-    public static function getPublishedPostsCount()
-    {
-        return Post::where('status', 'publish')
-                   ->whereDate('published_at', '<=', now())
-                   ->count();
-    }
-
-    /**
-     * Get pending posts count.
-     *
-     * @return int
-     */
-    public static function getPendingPostsCount()
-    {
-        return Post::where('status', 'pending')->count();
     }
 }

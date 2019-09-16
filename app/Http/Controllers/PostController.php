@@ -46,27 +46,6 @@ class PostController extends Controller
                    ->first();
     }
 
-    /**
-     * Get published posts count.
-     *
-     * @return int
-     */
-    public static function getPublishedPostsCount()
-    {
-        return Post::where('status', 'publish')
-                   ->whereDate('published_at', '<=', now())
-                   ->count();
-    }
-
-    /**
-     * Get pending posts count.
-     *
-     * @return int
-     */
-    public static function getPendingPostsCount()
-    {
-        return Post::where('status', 'pending')->count();
-    }
 
     /**
      * Display a listing of posts.

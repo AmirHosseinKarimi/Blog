@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Dashboard;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class DashboardController extends Controller
 {
@@ -21,7 +22,11 @@ class DashboardController extends Controller
             'comments' => (object)[
                 'approved' => CommentController::getApprovedCount(),
                 'pending' => CommentController::getPendingCount()
-            ]
+            ],
+            // 'users' => (object)[
+            //     'all' => UserController::getUsersCount(),
+            //     'new' => UserController::getNewUsersCount(),
+            // ]
         ];
 
         return view('dashboard.index', compact('cards'));
