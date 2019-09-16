@@ -51,7 +51,7 @@
                     @else
                         @if (Auth::user()->canUseDashboard())
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('dashboard') }}" target="_blank">{{ __('Dashboard') }}</a>
+                                <a class="nav-link" href="{{ route('dashboard') }}">{{ __('Dashboard') }}</a>
                             </li>
                         @endif
                         <li class="nav-item dropdown">
