@@ -23,10 +23,10 @@ class DashboardController extends Controller
                 'approved' => CommentController::getApprovedCount(),
                 'pending' => CommentController::getPendingCount()
             ],
-            // 'users' => (object)[
-            //     'all' => UserController::getUsersCount(),
-            //     'new' => UserController::getNewUsersCount(),
-            // ]
+            'subscribers' => (object)[
+                'all' => UserController::getSubscribersCount(),
+                'new' => UserController::getNewSubscribersCount(),
+            ]
         ];
 
         return view('dashboard.index', compact('cards'));

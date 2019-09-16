@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 
 class UserController extends Controller
 {
@@ -82,5 +83,27 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    /**
+     * Get subscribers count.
+     *
+     * @return int
+     */
+    public static function getSubscribersCount()
+    {
+        return User::where('role', 'subscriber')->count();
+    }
+
+    /**
+     * Get subscribers count in last 7 days.
+     *
+     * @return int
+     */
+    public static function getNewSubscribersCount()
+    {
+        return User::where('role', 'subscriber')
+                   ->whereDate('created_at', '>=', Carbon::now()->subDays(6))
+                   ->count();
     }
 }

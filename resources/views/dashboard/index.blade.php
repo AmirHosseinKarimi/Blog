@@ -33,8 +33,8 @@
             <span class="info-box-icon bg-yellow"><i class="fas fa-users"></i></span>
             <div class="info-box-content">
               <span class="info-box-text">Subscribers</span>
-              <span class="info-box-number">2,000</span>
-              <span class="text-success">5 New</span>
+              <span class="info-box-number">{{ $cards->subscribers->all }}</span>
+              <span class="text-success">{{ $cards->subscribers->new }} New</span>
             </div>
           </div>
         </div>
